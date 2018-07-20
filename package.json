@@ -18,5 +18,8 @@
   "homepage": "https://github.com/romcar/HIR-TOY#readme",
   "devDependencies": {
     "jest": "^23.4.1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
   }
 }
