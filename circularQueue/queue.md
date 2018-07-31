@@ -30,3 +30,10 @@ Problem:
     - isEmpty(): Checks whether the circular queue is empty or not.
 
     - isFull(): Checks whether the circular queue is full or not.
+
+
+  Check test for more information
+
+Most languages have a Queue implementation, so the wheel doesn't need to be reinvented.
+
+Uses of Queues:

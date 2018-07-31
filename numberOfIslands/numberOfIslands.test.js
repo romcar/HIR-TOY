@@ -33,6 +33,20 @@ describe('Number of Islands', () => {
 
     expect(numIslands(map)).toBe(4);
   });
+
+  it('Should return 0 if the map has no length', ()=> {
+    let map = [];
+
+    expect(numIslands(map)).toBe(0);
+
+    map = [
+      [],
+      [],
+      []
+    ];
+
+    expect(numIslands(map)).toBe(0);
+  });
 });
 
 /*
