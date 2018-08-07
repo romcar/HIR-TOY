@@ -78,7 +78,7 @@ describe('Remove Duplicates from singly linked list', () => {
 			}
 		};
 
-		expect().toEqual({
+		expect(removeDups(linkedList)).toEqual({
 			value: 6,
 			next: {
 				value: 3,
