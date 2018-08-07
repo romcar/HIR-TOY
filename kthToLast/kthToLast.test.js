@@ -27,18 +27,29 @@ describe('kthToLast', () => {
 		}
 	}; // end ll
 	it('should return nothing if k is larger than the list', () => {
-		expect(kthToLast(ll, 10)).toBe(undefined);
+		console.log = jest.fn();
+		kthToLast(ll, 10);
+		expect(console.log).toHaveBeenCalledTimes(0);
 	});
 
 	it('should return the first item in the list if the correct length is provided', () => {
-		expect(kthToLast(ll, 8)).toEqual(1);
+		console.log = jest.fn();
+		kthToLast(ll, 7);
+		expect(console.log).toHaveBeenCalledTimes(1);
+		expect(console.log).toHaveBeenCalledWith(`The k to last element in this list is 1`);
 	});
 
 	it('Should return the last item in the list if k is not provided', () => {
-		expect(kthToLast(ll)).toBe(8);
+		console.log = jest.fn();
+		kthToLast(ll);
+		expect(console.log).toHaveBeenCalledTimes(1);
+		expect(console.log).toHaveBeenCalledWith('The k to last element in this list is 8');
 	});
 
 	it('Should return the correct value in the middle of the list', () => {
-		expect(kthToLast(ll, 5)).to(4);
+		console.log = jest.fn();
+		kthToLast(ll, 4);
+		expect(console.log).toHaveBeenCalledTimes(1);
+		expect(console.log).toHaveBeenCalledWith('The k to last element in this list is 4');
 	});
 });
