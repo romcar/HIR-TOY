@@ -98,4 +98,159 @@ describe('Remove Duplicates from singly linked list', () => {
 			}
 		});
 	});
+	it('Should be able to do a linked list with two repeated values', () => {
+		const linkedlist = {
+			value: 1,
+			next: {
+				value: 2,
+				next: {
+					value: 1,
+					next: {
+						value: 2,
+						next: {
+							value: 1,
+							next: {
+								value: 2,
+								next: {
+									value: 1,
+									next: {
+										value: 2,
+										next: {
+											value: 1,
+											next: {
+												value: 2,
+												next: {
+													value: 1,
+													next: {
+														value: 2,
+														next: {
+															value: 1,
+															next: {
+																value: 2,
+																next: {
+																	value: 1,
+																	next: {
+																		value: 2,
+																		next: {
+																			value: 1,
+																			next: {
+																				value: 2,
+																				next: {
+																					value: 1,
+																					next: {
+																						value: 2,
+																						next: {
+																							value: 1,
+																							next: {
+																								value: 2,
+																								next: {
+																									value: 1,
+																									next: {
+																										value: 2,
+																										next: {
+																											value: 1,
+																											next: {
+																												value: 2,
+																												next: {
+																													value: 1,
+																													next: {
+																														value: 2,
+																														next: {
+																															value: 1,
+																															next: {
+																																value: 2,
+																																next: {
+																																	value: 1,
+																																	next: {
+																																		value: 2,
+																																		next: {
+																																			value: 1,
+																																			next: {
+																																				value: 2,
+																																				next: {
+																																					value: 1,
+																																					next: {
+																																						value: 2,
+																																						next: {
+																																							value: 1,
+																																							next: {
+																																								value: 2,
+																																								next: {
+																																									value: 1,
+																																									next: {
+																																										value: 2,
+																																										next: {
+																																											value: 1,
+																																											next: {
+																																												value: 2,
+																																												next: {
+																																													value: 1,
+																																													next: {
+																																														value: 2,
+																																														next: {
+																																															value: 1,
+																																															next: {
+																																																value: 2,
+																																																next: {
+																																																	value: 1,
+																																																	next: {
+																																																		value: 2,
+																																																		next: {
+																																																			value: 1,
+																																																			next: {
+																																																				value: 2,
+																																																				next: null
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}; // end of linked list
+
+		expect(removeDups(linkedlist)).toEqual({ value: 1, next: { value: 2, next: null } });
+	});
 });
