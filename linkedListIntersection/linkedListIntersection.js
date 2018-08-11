@@ -51,9 +51,6 @@ const linkedListIntersection = (l1, l2) => {
   }
 
   return longList;
-
-
-
 }
 
 module.exports = linkedListIntersection;
