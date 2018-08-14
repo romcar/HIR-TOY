@@ -5,7 +5,7 @@ const loopDetection = (head) => {
   while (fastPointer && fastPointer.next) {
     slowPointer = slowPointer.next;
     fastPointer = fastPointer.next.next;
-    if (slowPointer == fastPointer) {
+    if (slowPointer === fastPointer) {
       break;
     }
   };
@@ -14,7 +14,7 @@ const loopDetection = (head) => {
     return false;
   }
   slowPointer = head;
-  while (slowPointer != fastPointer) {
+  while (slowPointer !== fastPointer) {
     slowPointer = slowPointer.next
     fastPointer = fastPointer.next;
   }

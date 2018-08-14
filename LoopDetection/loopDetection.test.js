@@ -31,4 +31,11 @@ describe('Loop detection for linked list', () => {
     ll.createWithinRange(0, 99);
     expect(loopDetection(ll.head)).toEqual(false);
   });
+
+  it('test', () => {
+    var ll = new LinkedList();
+    var lx = ll;
+
+    expect(lx === ll).toBe(true)
+  });
 });
