@@ -4,7 +4,6 @@ class Queue {
     this.limit = limit ? limit : null;
     this.size = 0;
   }
-
   enqueue(val) {
     if (this.limit && this.limit === this.size) {
       throw new Error('Queue is full');
@@ -13,7 +12,6 @@ class Queue {
     this.storage = [val].concat(this.storage);
     this.size++;
   }// Time complexity O(1);
-
   dequeue() {
     if (this.size <= 0) {
       this.size = 0;
