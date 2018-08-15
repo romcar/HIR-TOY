@@ -1,7 +1,7 @@
 module.exports = palinPermutation = (str) => {
   const createCharMap = (string) => {
     return string.split('').reduce((acc, char) => {
-      if(!acc[char]) {
+      if (!acc[char]) {
         acc[char] = 1;
         acc.length++;
       } else {
@@ -9,21 +9,20 @@ module.exports = palinPermutation = (str) => {
         acc.length++;
       }
       return acc;
-    }, {length: 0});
+    }, { length: 0 });
   };
 
   const checkForOneOddChar = (charMap) => {
-    debugger;
     let found = false;
-    for(let char in charMap) {
-      if (charMap[char] %2 !== 0 && !found && char !== 'length') {
+    for (let char in charMap) {
+      if (charMap[char] % 2 !== 0 && !found && char !== 'length') {
         found = true;
       } else if (charMap[char] % 2 !== 0 && found && char !== 'length') {
         return false;
       }
     }
 
-    if(charMap.length%2 === 0 ) {
+    if (charMap.length % 2 === 0) {
       return true;
     } else {
       return found;

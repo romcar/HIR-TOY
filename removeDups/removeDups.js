@@ -4,7 +4,6 @@ const removeDups = list => {
   }
 
   var values = {};
-  debugger;
   let head = list;
   while (list && list.next) {
     // start off with the first item
