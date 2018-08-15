@@ -11,13 +11,53 @@ const toHashedIndex = (val, max) => {
 
 const HashSet = function (num) {
   const hashSet = {};
-  const storage = [];
+  let storage = [];
   hashSet.limit = num || 4;
   hashSet.size = 0;
 
+  hashSet.checkSizeAndNormalize = function () {
+    let temp = [];
+    let percentFilled = this.size / this.limit;
+    if (percentFilled >= 0.75) {
+      let iterator = this.iterator();
+      let tempValue = null;
 
+      while (tempValue = iterator()) {
+        let index = toHashedIndex(tempValue, this.limit * 2);
+
+        if (!temp[index]) {
+          temp[index] = [tempValue];
+        } else {
+          if (!temp[index].includes(tempValue)) {
+            temp[index].push(tempValue);
+          }
+        }
+      }
+      storage = temp;
+      this.limit = this.limit * 2;
+    } else if (percentFilled <= 0.25 && this.limit > 4) {
+      let iterator = this.iterator();
+      let tempValue = null;
+
+      while (tempValue = iterator()) {
+        let index = toHashedIndex(tempValue, this.limit / 2);
+
+        if (!temp[index]) {
+          temp[index] = [tempValue];
+        } else {
+          if (!temp[index].includes(tempValue)) {
+            temp[index].push(tempValue);
+          }
+        }
+      }
+      storage = temp;
+      this.limit = this.limit / 2;
+    }
+  }
   hashSet.add = function (value) {
     let index = toHashedIndex(value, this.limit);
+
+    this.checkSizeAndNormalize();
 
     if (!storage[index]) {
       storage[index] = [value];
@@ -31,6 +71,9 @@ const HashSet = function (num) {
   }; // Time complexity: O(1)
 
   hashSet.remove = function (value) {
+
+    this.checkSizeAndNormalize();
+
     let index = toHashedIndex(value, this.limit);
     let result = null;
     if (!storage[index]) {
@@ -61,7 +104,7 @@ const HashSet = function (num) {
 
   hashSet.clone = function () {
     return this;
-  };
+  }; // Time complexity: O(1)
 
   hashSet.contains = function (value) {
     let index = toHashedIndex(value, this.limit);
@@ -100,6 +143,7 @@ const HashSet = function (num) {
         if (currentItem) {
           ++bucketItem;
           if (count !== size) {
+            ++count;
             return currentItem;
 
           }
@@ -109,7 +153,6 @@ const HashSet = function (num) {
         result = recurse();
 
         if (result) {
-          ++count;
           return result;
         }
       } else {
@@ -123,8 +166,6 @@ const HashSet = function (num) {
   };
 
   return hashSet;
-}
-
-
+} // Time complexity: O(1) for each, for entire traversal O(n)
 
 module.exports = HashSet;

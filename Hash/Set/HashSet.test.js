@@ -37,7 +37,7 @@ describe('Hash Set', () => {
   });
 
   it('Should be able to iterate over the items in the hash set one by one', () => {
-    const h = new HashSet(50);
+    const h = new HashSet();
 
     const elements = [
       'wonderful', 'watermelon', 'grapes', 'money', 'javascript', 'mouse',
@@ -48,26 +48,15 @@ describe('Hash Set', () => {
     elements.forEach((item) => {
       h.add(item);
     });
+
     let iterator = h.iterator();
     expect(iterator).toBeInstanceOf(Function);
-    expect(iterator()).toEqual('lexar');
-    expect(iterator()).toEqual('watermelon');
-    expect(iterator()).toEqual('mouse');
-    expect(iterator()).toEqual('snacks');
-    expect(iterator()).toEqual('pen');
-    expect(iterator()).toEqual('lazer');
-    expect(iterator()).toEqual('dog');
-    expect(iterator()).toEqual('grapes');
-    expect(iterator()).toEqual('javascript');
-    expect(iterator()).toEqual('anchor');
-    expect(iterator()).toEqual('cartridge');
-    expect(iterator()).toEqual('cat');
-    expect(iterator()).toEqual('candy');
-    expect(iterator()).toEqual('wonderful');
-    expect(iterator()).toEqual('pepperoni');
-    expect(iterator()).toEqual('money');
-    expect(iterator()).toEqual('keyboard');
-    expect(iterator()).toEqual(undefined);
+
+    elements.forEach((item) => {
+      let iter = iterator()
+      expect(elements.includes(iter)).toEqual(true);
+    });
+
   });
 
   it('Should make a shallow copy of the hash set', () => {
@@ -78,7 +67,22 @@ describe('Hash Set', () => {
 
     const h2 = h1.clone();
 
-    console.log(h2.contains('dog'))
+    h2.remove('monkey');
+    expect(h1.contains('monkey')).toEqual(false);
+  });
+
+  it('Should double the limit when it reaches above 75% full', () => {
+    const h = new HashSet();
+
+    h.add('dog');
+    h.add('cat');
+    h.add('bird');
+    expect(h.limit).toEqual(4);
+    expect(h.size).toEqual(3);
+    h.add('monkey');
+    expect(h.size).toEqual(4);
+    expect(h.limit).toEqual(8);
+
   });
 });
 
