@@ -111,6 +111,26 @@ describe('Binary Search Tree', () => {
     expect(bst.contains(19)).toEqual(true);
     expect(bst.contains(6)).toEqual(true);
     expect(bst.contains(32)).toEqual(true);
-
   });
+
+  it('Should be able to iterate through tree an print preorder traversal', () => {
+    const bst = new BinarySearchTree();
+
+    const values = [343, 123, 54, 2, 9, 11, 90, 75, 87, 456, 27, 64, 82, 739, 855, 67, 55, 78, 1543, 8, 5, 4];
+
+    values.forEach(v => bst.add(v));
+  });
+
+  it('Should print out order of array in pre, in, and post order', () => {
+    const bst = new BinarySearchTree();
+    let values = [22, 13, 10, 14, 7, 12, 17, 3, 9, 11, 39, 24, 45, 23, 35, 42, 49, 31];
+    values.forEach(v => bst.add(v));
+
+    expect(bst.preOrder()).toEqual([22, 13, 10, 7, 3, 9, 12, 11, 14, 17, 39, 24, 23, 35, 31, 45, 42, 49]);
+
+    expect(bst.postOrder()).toEqual([3, 9, 7, 11, 12, 10, 17, 14, 13, 23, 31, 35, 24, 42, 49, 45, 39, 22]);
+
+    expect(bst.inOrder()).toEqual([3, 7, 9, 10, 11, 12, 13, 14, 17, 22, 23, 24, 31, 35, 39, 42, 45, 49]);
+  });
+
 });

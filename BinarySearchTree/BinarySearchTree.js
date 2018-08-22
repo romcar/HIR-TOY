@@ -60,7 +60,6 @@ BinarySearchTree.prototype.remove = function (value) {
 
   if (parent) {
     if (current.right && current.left) {
-      console.log(parent.left)
       if (parent.left && parent.left.value === value) {
         console.log(parent)
         parent.left = current.right;
@@ -137,7 +136,50 @@ BinarySearchTree.prototype.contains = function (value) {
   }
   return false;
 };
-// BinarySearchTree.prototype. = function() {};
-// BinarySearchTree.prototype = function() {};
+BinarySearchTree.prototype.depth = function (val) {
+  let current = this._root;
+  let height = null;
+  while (val && current && current.value !== val) {
+    if (current.value < val) {
+      current = current.right;
+    } else {
+      current = current.left;
+    }
+  }
+}
+BinarySearchTree.prototype.preOrder = function () {
+  let results = [];
+
+  (function preTraversal(current) {
+    if (!current) { return; }
+    results.push(current.value)
+    preTraversal(current.left);
+    preTraversal(current.right);
+  })(this._root);
+  return results;
+};
+BinarySearchTree.prototype.inOrder = function () {
+  let results = [];
+
+  (function inTraversal(current) {
+    if (!current) { return; }
+    inTraversal(current.left);
+    results.push(current.value)
+    inTraversal(current.right);
+  })(this._root);
+  return results;
+};
+
+BinarySearchTree.prototype.postOrder = function () {
+  let results = [];
+
+  (function postTraversal(current) {
+    if (!current) { return; }
+    postTraversal(current.left);
+    postTraversal(current.right);
+    results.push(current.value)
+  })(this._root);
+  return results;
+};
 
 module.exports = BinarySearchTree;
